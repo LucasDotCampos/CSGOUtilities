@@ -1,10 +1,10 @@
 import { getCustomRepository } from "typeorm";
 import MapsEntity from "../typeorm/entities/MapsEntity";
-import { IMaps } from "../../../shared/interfaces";
+import { IMapsCreation } from "../../../shared/interfaces";
 import MapsRepository from "../typeorm/repositories/MapsRepository";
 
 class MapsService {
-  public async create({ name, picture }: IMaps): Promise<MapsEntity> {
+  public async create({ name, picture }: IMapsCreation): Promise<MapsEntity> {
     const mapsRepository = getCustomRepository(MapsRepository);
     const mapsExists = await mapsRepository.findByName(name);
 

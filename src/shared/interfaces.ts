@@ -15,3 +15,8 @@ export interface IMaps {
   updated_at: Timestamp;
   created_at: Timestamp;
 }
+
+export interface IMapsCreation {
+  name: string;
+  picture: string;
+}
