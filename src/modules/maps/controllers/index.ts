@@ -25,7 +25,7 @@ export default class MapsController {
       });
       return response.json(map);
     } catch (err: any) {
-      return response.json(err.message);
+      return response.status(409).json(err.message);
     }
   }
 }
