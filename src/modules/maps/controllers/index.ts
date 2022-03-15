@@ -16,7 +16,7 @@ export default class MapsController {
       const mapsExists = await mapsRepository.findByName(name);
 
       if (mapsExists) {
-        return response.status(409);
+        throw new Error("This map already exists");
       }
 
       const map = await mapsService.create({
