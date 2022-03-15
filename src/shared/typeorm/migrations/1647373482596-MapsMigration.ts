@@ -19,6 +19,10 @@ export class MapsMigration1647373482596 implements MigrationInterface {
             type: "varchar",
           },
           {
+            name: "picture",
+            type: "varchar",
+          },
+          {
             name: "created_at",
             type: "timestamp with time zone",
             default: "now()",
