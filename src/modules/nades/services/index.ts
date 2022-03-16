@@ -21,6 +21,14 @@ class NadesService {
 
     return nade;
   }
+
+  public async index(): Promise<NadesEntity[]> {
+    const nadesRepository = getCustomRepository(NadesRepository);
+
+    const nades = nadesRepository.find();
+
+    return nades;
+  }
 }
 
 export default NadesService;

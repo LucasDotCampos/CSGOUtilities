@@ -24,6 +24,18 @@ class NadesController {
       return response.status(409).json(err.message);
     }
   }
+
+  public async index(request: Request, response: Response): Promise<Response> {
+    try {
+      const nadesService = new NadesService();
+
+      const nades = await nadesService.index();
+
+      return response.status(200).json(nades);
+    } catch (err: any) {
+      return response.status(409).json(err.message);
+    }
+  }
 }
 
 export default NadesController;
