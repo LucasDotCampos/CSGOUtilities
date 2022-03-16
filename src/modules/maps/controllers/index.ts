@@ -5,10 +5,7 @@ import MapsEntity from "../typeorm/entities/MapsEntity";
 import MapsRepository from "../typeorm/repositories/MapsRepository";
 
 export default class MapsController {
-  public async create(
-    request: Request,
-    response: Response
-  ): Promise<Response | MapsEntity> {
+  public async create(request: Request, response: Response): Promise<Response> {
     const { name, picture } = request.body;
     try {
       const mapsService = new MapsService();

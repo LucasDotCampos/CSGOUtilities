@@ -8,6 +8,11 @@ export interface INades {
   created_at: Timestamp;
 }
 
+export interface INadesCreation {
+  name: string;
+  picture: string;
+}
+
 export interface IMaps {
   id: string;
   name: string;
