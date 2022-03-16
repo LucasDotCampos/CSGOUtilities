@@ -1,6 +1,6 @@
 import { getCustomRepository } from "typeorm";
 import MapsEntity from "../typeorm/entities/MapsEntity";
-import { IMapId, IMapsCreation } from "../../../shared/interfaces";
+import { IMapId, IMapsCreation, IMapUpdate } from "../../../shared/interfaces";
 import MapsRepository from "../typeorm/repositories/MapsRepository";
 
 class MapsService {
@@ -40,6 +40,23 @@ class MapsService {
     }
 
     await mapsRepository.remove(map);
+  }
+
+  public async update({ id, name, picture }: IMapUpdate): Promise<MapsEntity> {
+    const mapsRepository = getCustomRepository(MapsRepository);
+
+    const map = await mapsRepository.findById(id);
+
+    if (!map) {
+      throw new Error("Map not found.");
+    }
+    id = id;
+    map.name = name;
+    map.picture = picture;
+
+    await mapsRepository.save(map);
+
+    return map;
   }
 }
 

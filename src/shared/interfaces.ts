@@ -24,3 +24,9 @@ export interface IMapsCreation {
 export interface IMapId {
   id: string;
 }
+
+export interface IMapUpdate {
+  id: string;
+  name: string;
+  picture: string;
+}

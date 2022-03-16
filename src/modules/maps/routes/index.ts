@@ -7,5 +7,6 @@ const mapsController = new MapsController();
 routes.post("/create", mapsController.create);
 routes.get("/", mapsController.index);
 routes.delete("/delete/:id", mapsController.delete);
+routes.put("/update/:id", mapsController.update);
 
 export default routes;
