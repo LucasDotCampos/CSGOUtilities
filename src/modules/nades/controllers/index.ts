@@ -47,6 +47,19 @@ class NadesController {
       return response.status(404).json(err.message);
     }
   }
+
+  public async update(request: Request, response: Response): Promise<Response> {
+    try {
+      const { id } = request.params;
+      const { name, picture } = request.body;
+      const nadesService = new NadesService();
+      const nade = await nadesService.update({ id, picture, name });
+
+      return response.status(200).json(nade);
+    } catch (err: any) {
+      return response.status(404).json(err.message);
+    }
+  }
 }
 
 export default NadesController;

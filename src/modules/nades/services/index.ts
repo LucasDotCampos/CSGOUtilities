@@ -1,5 +1,9 @@
 import { getCustomRepository } from "typeorm";
-import { INadeId, INadesCreation } from "../../../shared/interfaces";
+import {
+  INadesId,
+  INadesCreation,
+  INadesUpdate,
+} from "../../../shared/interfaces";
 import NadesEntity from "../typeorm/entities/NadesEntity";
 import NadesRepository from "../typeorm/repositories/NadeRepository";
 
@@ -30,7 +34,7 @@ class NadesService {
     return nades;
   }
 
-  public async delete({ id }: INadeId): Promise<void> {
+  public async delete({ id }: INadesId): Promise<void> {
     const nadeRepository = getCustomRepository(NadesRepository);
 
     const nade = await nadeRepository.findOne(id);
@@ -40,6 +44,27 @@ class NadesService {
     }
 
     await nadeRepository.remove(nade);
+  }
+
+  public async update({
+    id,
+    name,
+    picture,
+  }: INadesUpdate): Promise<NadesEntity> {
+    const nadesRepository = getCustomRepository(NadesRepository);
+
+    const nade = await nadesRepository.findById(id);
+
+    if (!nade) {
+      throw new Error("Nade not found.");
+    }
+    id = id;
+    nade.name = name;
+    nade.picture = picture;
+
+    await nadesRepository.save(nade);
+
+    return nade;
   }
 }
 

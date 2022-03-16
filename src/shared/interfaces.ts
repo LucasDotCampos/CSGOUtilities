@@ -13,8 +13,14 @@ export interface INadesCreation {
   picture: string;
 }
 
-export interface INadeId {
+export interface INadesId {
   id: string;
+}
+
+export interface INadesUpdate {
+  id: string;
+  name: string;
+  picture: string;
 }
 
 export interface IMaps {
