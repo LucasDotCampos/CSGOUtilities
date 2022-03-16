@@ -8,7 +8,12 @@ import NadesEntity from "../typeorm/entities/NadesEntity";
 import NadesRepository from "../typeorm/repositories/NadeRepository";
 
 class NadesService {
-  public async create({ name, picture }: INadesCreation): Promise<NadesEntity> {
+  public async create({
+    name,
+    picture,
+    from,
+    to,
+  }: INadesCreation): Promise<NadesEntity> {
     const nadesRepository = getCustomRepository(NadesRepository);
     const nadesExists = await nadesRepository.findByName(name);
 
@@ -19,6 +24,8 @@ class NadesService {
     const nade = nadesRepository.create({
       name,
       picture,
+      from,
+      to,
     });
 
     await nadesRepository.save(nade);
@@ -50,6 +57,8 @@ class NadesService {
     id,
     name,
     picture,
+    from,
+    to,
   }: INadesUpdate): Promise<NadesEntity> {
     const nadesRepository = getCustomRepository(NadesRepository);
 
@@ -61,6 +70,8 @@ class NadesService {
     id = id;
     nade.name = name;
     nade.picture = picture;
+    nade.from = from;
+    nade.to = to;
 
     await nadesRepository.save(nade);
 

@@ -18,6 +18,12 @@ class NadesEntity {
   @Column()
   picture: string;
 
+  @Column()
+  from: string;
+
+  @Column()
+  to: string;
+
   @CreateDateColumn()
   created_at: Timestamp;
 

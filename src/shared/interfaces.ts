@@ -4,6 +4,8 @@ export interface INades {
   id: string;
   name: string;
   picture: string;
+  from: string;
+  to: string;
   updated_at: Timestamp;
   created_at: Timestamp;
 }
@@ -11,6 +13,8 @@ export interface INades {
 export interface INadesCreation {
   name: string;
   picture: string;
+  from: string;
+  to: string;
 }
 
 export interface INadesId {
@@ -21,6 +25,8 @@ export interface INadesUpdate {
   id: string;
   name: string;
   picture: string;
+  from: string;
+  to: string;
 }
 
 export interface IMaps {

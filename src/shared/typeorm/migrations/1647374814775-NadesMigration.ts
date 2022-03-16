@@ -22,6 +22,16 @@ export class NadesMigration1647374814775 implements MigrationInterface {
             name: "picture",
             type: "varchar",
           },
+
+          {
+            name: "from",
+            type: "varchar",
+          },
+
+          {
+            name: "to",
+            type: "varchar",
+          },
           {
             name: "created_at",
             type: "timestamp with time zone",
