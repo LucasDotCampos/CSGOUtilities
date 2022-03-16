@@ -13,6 +13,10 @@ export interface INadesCreation {
   picture: string;
 }
 
+export interface INadeId {
+  id: string;
+}
+
 export interface IMaps {
   id: string;
   name: string;

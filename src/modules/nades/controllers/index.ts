@@ -36,6 +36,17 @@ class NadesController {
       return response.status(409).json(err.message);
     }
   }
+
+  public async delete(request: Request, response: Response): Promise<Response> {
+    try {
+      const { id } = request.params;
+      const nadesService = new NadesService();
+      await nadesService.delete({ id });
+      return response.status(200).json("Nade was removed succesfully");
+    } catch (err: any) {
+      return response.status(404).json(err.message);
+    }
+  }
 }
 
 export default NadesController;
