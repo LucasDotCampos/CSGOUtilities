@@ -21,6 +21,14 @@ class MapsService {
 
     return map;
   }
+
+  public async index(): Promise<MapsEntity[]> {
+    const mapsRepository = getCustomRepository(MapsRepository);
+
+    const maps = mapsRepository.find();
+
+    return maps;
+  }
 }
 
 export default MapsService;
