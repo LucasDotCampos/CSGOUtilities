@@ -20,3 +20,7 @@ export interface IMapsCreation {
   name: string;
   picture: string;
 }
+
+export interface IMapId {
+  id: string;
+}

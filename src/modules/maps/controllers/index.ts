@@ -40,4 +40,15 @@ export default class MapsController {
       return response.status(409).json(err.message);
     }
   }
+
+  public async delete(request: Request, response: Response): Promise<Response> {
+    try {
+      const { id } = request.params;
+      const mapsService = new MapsService();
+      await mapsService.delete({ id });
+      return response.json("Map was removed succesfully");
+    } catch (err: any) {
+      return response.status(404).json(err.message);
+    }
+  }
 }
