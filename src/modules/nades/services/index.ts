@@ -13,6 +13,8 @@ class NadesService {
     picture,
     from,
     to,
+    position,
+    tickrate,
   }: INadesCreation): Promise<NadesEntity> {
     const nadesRepository = getCustomRepository(NadesRepository);
     const nadesExists = await nadesRepository.findByName(name);
@@ -26,6 +28,8 @@ class NadesService {
       picture,
       from,
       to,
+      position,
+      tickrate,
     });
 
     await nadesRepository.save(nade);
@@ -59,6 +63,8 @@ class NadesService {
     picture,
     from,
     to,
+    position,
+    tickrate,
   }: INadesUpdate): Promise<NadesEntity> {
     const nadesRepository = getCustomRepository(NadesRepository);
 
@@ -72,6 +78,8 @@ class NadesService {
     nade.picture = picture;
     nade.from = from;
     nade.to = to;
+    nade.position = position;
+    nade.tickrate = tickrate;
 
     await nadesRepository.save(nade);
 

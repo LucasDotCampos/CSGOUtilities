@@ -24,6 +24,12 @@ class NadesEntity {
   @Column()
   to: string;
 
+  @Column()
+  tickrate: string;
+
+  @Column()
+  position: string;
+
   @CreateDateColumn()
   created_at: Timestamp;
 
