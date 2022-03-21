@@ -20,7 +20,7 @@ export class NadesMigration1647374814775 implements MigrationInterface {
           },
           {
             name: "tickrate",
-            type: "int",
+            type: "varchar",
           },
           {
             name: "position",
