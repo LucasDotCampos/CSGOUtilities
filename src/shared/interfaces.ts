@@ -57,3 +57,10 @@ export interface IMapUpdate {
   name: string;
   picture: string;
 }
+
+export interface ICreateUser {
+  name: string;
+  email: string;
+  password: string;
+  avatar: string;
+}
