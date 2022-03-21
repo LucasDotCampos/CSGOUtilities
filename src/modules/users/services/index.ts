@@ -1,4 +1,4 @@
-import { getCustomRepository } from "typeorm";
+import { getCustomRepository, getRepository } from "typeorm";
 import UserEntity from "../typeorm/entities/UserEntity";
 import UsersRepository from "../typeorm/repository/UserRepository";
 import { hash } from "bcryptjs";
@@ -30,6 +30,18 @@ class UserService {
     await usersRepository.save(user);
 
     return user;
+  }
+
+  public async index(): Promise<UserEntity[]> {
+    const usersRepository = getRepository(UserEntity);
+
+    const users = await usersRepository.find({
+      order: {
+        name: "ASC",
+      },
+    });
+
+    return users;
   }
 }
 

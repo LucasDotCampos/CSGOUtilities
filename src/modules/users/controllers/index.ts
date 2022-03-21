@@ -19,4 +19,16 @@ export default class UsersController {
       return response.status(409).json(err.message);
     }
   }
+
+  public async index(request: Request, response: Response): Promise<Response> {
+    try {
+      const userService = new UserService();
+
+      const users = await userService.index();
+
+      return response.status(200).json(users);
+    } catch (err: any) {
+      return response.status(400).json(err.message);
+    }
+  }
 }
