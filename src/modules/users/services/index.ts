@@ -2,7 +2,7 @@ import { getCustomRepository, getRepository } from "typeorm";
 import UserEntity from "../typeorm/entities/UserEntity";
 import UsersRepository from "../typeorm/repository/UserRepository";
 import { hash } from "bcryptjs";
-import { ICreateUser } from "../../../shared/interfaces";
+import { ICreateUser, IUserId } from "../../../shared/interfaces";
 
 class UserService {
   public async create({
@@ -42,6 +42,16 @@ class UserService {
     });
 
     return users;
+  }
+
+  public async delete({ id }: IUserId): Promise<void> {
+    const usersRepository = getCustomRepository(UsersRepository);
+    const user = await usersRepository.findOne(id);
+
+    if (!user) {
+      throw new Error("User not found");
+    }
+    await usersRepository.remove(user);
   }
 }
 

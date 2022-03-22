@@ -53,4 +53,16 @@ export default class UsersController {
       return response.status(403).json(err.message);
     }
   }
+
+  public async delete(request: Request, response: Response): Promise<Response> {
+    try {
+      const { id } = request.params;
+      const userService = new UserService();
+
+      await userService.delete({ id });
+      return response.status(200).json("Sucessfully removed");
+    } catch (err: any) {
+      return response.status(404).json(err.message);
+    }
+  }
 }
