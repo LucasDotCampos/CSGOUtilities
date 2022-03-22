@@ -25,7 +25,11 @@ class MapsService {
   public async index(): Promise<MapsEntity[]> {
     const mapsRepository = getCustomRepository(MapsRepository);
 
-    const maps = mapsRepository.find();
+    const maps = mapsRepository.find({
+      order: {
+        name: "ASC",
+      },
+    });
 
     return maps;
   }

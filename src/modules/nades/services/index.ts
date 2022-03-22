@@ -42,7 +42,11 @@ class NadesService {
   public async index(): Promise<NadesEntity[]> {
     const nadesRepository = getCustomRepository(NadesRepository);
 
-    const nades = nadesRepository.find();
+    const nades = nadesRepository.find({
+      order: {
+        name: "ASC",
+      },
+    });
 
     return nades;
   }

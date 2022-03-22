@@ -65,4 +65,24 @@ export default class UsersController {
       return response.status(404).json(err.message);
     }
   }
+
+  public async update(request: Request, response: Response): Promise<Response> {
+    try {
+      const { userId } = request.params;
+      const { name, email, password, oldPassword } = request.body;
+
+      const userService = new UserService();
+
+      const user = await userService.update({
+        userId,
+        name,
+        email,
+        password,
+        oldPassword,
+      });
+      return response.status(200).json(user);
+    } catch (err: any) {
+      return response.status(400).json(err.message);
+    }
+  }
 }

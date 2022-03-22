@@ -67,6 +67,14 @@ export interface ICreateUser {
   avatar: string;
 }
 
+export interface IUserUpdate {
+  userId: string;
+  name: string;
+  email: string;
+  password?: string;
+  oldPassword?: string;
+}
+
 export interface IUserValidate {
   email: string;
   password: string;
@@ -77,12 +85,12 @@ export interface IUserToken {
   token: string;
 }
 
+export interface IUserId {
+  id: string;
+}
+
 export interface TokenPayload {
   id: string;
   iat: number;
   exp: number;
-}
-
-export interface IUserId {
-  id: string;
 }
