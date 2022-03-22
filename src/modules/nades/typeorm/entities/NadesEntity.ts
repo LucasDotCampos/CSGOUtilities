@@ -5,7 +5,10 @@ import {
   CreateDateColumn,
   Timestamp,
   UpdateDateColumn,
+  ManyToOne,
+  JoinColumn,
 } from "typeorm";
+import UserEntity from "../../../users/typeorm/entities/UserEntity";
 
 @Entity("nades")
 class NadesEntity {
@@ -26,6 +29,10 @@ class NadesEntity {
 
   @Column()
   tickrate: string;
+
+  @ManyToOne(() => UserEntity)
+  @JoinColumn({ name: "user_id" })
+  userId: UserEntity;
 
   @Column()
   position: string;

@@ -19,9 +19,9 @@ export default function isAuthenticated(
   try {
     const secret = process.env.SECRET;
     const decodedToken = verify(token, `${secret}`);
-    const { sub } = decodedToken as TokenPayload;
+    const { id } = decodedToken as TokenPayload;
 
-    request.userId = sub;
+    request.userId = id;
 
     return next();
   } catch {

@@ -15,6 +15,7 @@ class NadesService {
     to,
     position,
     tickrate,
+    userId,
   }: INadesCreation): Promise<NadesEntity> {
     const nadesRepository = getCustomRepository(NadesRepository);
     const nadesExists = await nadesRepository.findByName(name);
@@ -30,6 +31,7 @@ class NadesService {
       to,
       position,
       tickrate,
+      userId,
     });
 
     await nadesRepository.save(nade);

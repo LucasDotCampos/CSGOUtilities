@@ -20,6 +20,7 @@ export interface INadesCreation {
   to: string;
   tickrate: string;
   position: string;
+  userId: any;
 }
 
 export interface INadesId {
@@ -77,7 +78,7 @@ export interface IUserToken {
 }
 
 export interface TokenPayload {
-  sub: string;
+  id: string;
   iat: number;
   exp: number;
 }

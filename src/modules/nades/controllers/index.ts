@@ -21,6 +21,7 @@ class NadesController {
         to,
         tickrate,
         position,
+        userId: request.userId,
       });
 
       return response.status(200).json(nade);
