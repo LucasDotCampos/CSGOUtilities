@@ -1,4 +1,5 @@
 import { Timestamp } from "typeorm";
+import UserEntity from "../modules/users/typeorm/entities/UserEntity";
 
 export interface INades {
   id: string;
@@ -63,4 +64,20 @@ export interface ICreateUser {
   email: string;
   password: string;
   avatar: string;
+}
+
+export interface IUserValidate {
+  email: string;
+  password: string;
+}
+
+export interface IUserToken {
+  user: UserEntity;
+  token: string;
+}
+
+export interface TokenPayload {
+  sub: string;
+  iat: number;
+  exp: number;
 }

@@ -22,7 +22,7 @@ class UserEntity {
   email: string;
 
   @Column({ select: false })
-  password: string;
+  password?: string;
 
   @Column()
   avatar: string;

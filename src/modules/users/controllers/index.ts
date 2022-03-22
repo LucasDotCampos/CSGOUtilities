@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
 import UserService from "../services";
+import SessionsService from "../services/SessionsService";
+import UserEntity from "../typeorm/entities/UserEntity";
 
 export default class UsersController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -29,6 +31,26 @@ export default class UsersController {
       return response.status(200).json(users);
     } catch (err: any) {
       return response.status(400).json(err.message);
+    }
+  }
+
+  public async session(
+    request: Request,
+    response: Response
+  ): Promise<Response | UserEntity> {
+    try {
+      const { email, password } = request.body;
+
+      const session = new SessionsService();
+
+      const user = await session.execute({
+        email,
+        password,
+      });
+
+      return response.json(user);
+    } catch (err: any) {
+      return response.status(403).json(err.message);
     }
   }
 }
