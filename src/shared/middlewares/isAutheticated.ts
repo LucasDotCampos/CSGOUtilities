@@ -16,15 +16,20 @@ export default function isAuthenticated(
 
   const [, token] = authHeader.split(" ");
 
-  try {
-    const secret = process.env.SECRET;
-    const decodedToken = verify(token, `${secret}`);
-    const { id } = decodedToken as TokenPayload;
+  const secret = process.env.SECRET;
+  const decodedToken = verify(token, `${secret}`);
 
-    request.userId = id;
-
-    return next();
-  } catch {
-    throw new Error("Invalid JWT Token.");
+  if (!decodedToken) {
+    throw new Error("Invalid JWT token");
   }
+
+  const paramsId = request.params.userId;
+
+  const { id } = decodedToken as TokenPayload;
+  if (paramsId !== id) {
+    throw new Error("You're not able to update this profile.");
+  }
+  request.userId = id;
+
+  return next();
 }
