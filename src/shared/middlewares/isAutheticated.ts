@@ -26,9 +26,11 @@ export default function isAuthenticated(
   const paramsId = request.params.userId;
 
   const { id } = decodedToken as TokenPayload;
-  if (paramsId !== id) {
-    throw new Error("You're not able to update this profile.");
+
+  if (request.originalUrl.includes("/users/update") && paramsId !== id) {
+    throw new Error("You're not able to do it");
   }
+
   request.userId = id;
 
   return next();

@@ -33,6 +33,9 @@ class NadesEntity {
   @Column()
   link: string;
 
+  @Column()
+  map: string;
+
   @ManyToOne(() => UserEntity)
   @JoinColumn({ name: "user_id" })
   userId: UserEntity;

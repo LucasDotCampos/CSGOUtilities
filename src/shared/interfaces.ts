@@ -10,6 +10,7 @@ export interface INades {
   link: string;
   tickrate: string;
   position: string;
+  map: string;
   updated_at: Timestamp;
   created_at: Timestamp;
 }
@@ -23,6 +24,7 @@ export interface INadesCreation {
   position: string;
   userId: any;
   link: string;
+  map: string;
 }
 
 export interface INadesId {
