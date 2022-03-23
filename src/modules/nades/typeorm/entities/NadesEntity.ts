@@ -30,6 +30,9 @@ class NadesEntity {
   @Column()
   tickrate: string;
 
+  @Column()
+  link: string;
+
   @ManyToOne(() => UserEntity)
   @JoinColumn({ name: "user_id" })
   userId: UserEntity;

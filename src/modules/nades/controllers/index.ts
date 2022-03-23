@@ -4,7 +4,7 @@ import NadesService from "../services";
 import NadesRepository from "../typeorm/repositories/NadeRepository";
 class NadesController {
   public async create(request: Request, response: Response): Promise<Response> {
-    const { name, picture, from, to, tickrate, position } = request.body;
+    const { name, picture, from, to, tickrate, position, link } = request.body;
     try {
       const nadesService = new NadesService();
       const nadesRepository = getCustomRepository(NadesRepository);
@@ -22,6 +22,7 @@ class NadesController {
         tickrate,
         position,
         userId: request.userId,
+        link,
       });
 
       return response.status(200).json(nade);
@@ -56,7 +57,8 @@ class NadesController {
   public async update(request: Request, response: Response): Promise<Response> {
     try {
       const { id } = request.params;
-      const { name, picture, from, to, position, tickrate } = request.body;
+      const { name, picture, from, to, position, tickrate, link } =
+        request.body;
       const nadesService = new NadesService();
       const nade = await nadesService.update({
         id,
@@ -66,6 +68,7 @@ class NadesController {
         to,
         position,
         tickrate,
+        link,
       });
 
       return response.status(200).json(nade);

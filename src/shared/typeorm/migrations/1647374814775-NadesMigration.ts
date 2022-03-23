@@ -41,6 +41,10 @@ export class NadesMigration1647374814775 implements MigrationInterface {
             type: "varchar",
           },
           {
+            name: "link",
+            type: "varchar",
+          },
+          {
             name: "created_at",
             type: "timestamp with time zone",
             default: "now()",
