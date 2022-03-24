@@ -36,7 +36,7 @@ class NadesEntity {
   @Column()
   map: string;
 
-  @ManyToOne(() => UserEntity)
+  @ManyToOne(() => UserEntity, { eager: true })
   @JoinColumn({ name: "user_id" })
   userId: UserEntity;
 

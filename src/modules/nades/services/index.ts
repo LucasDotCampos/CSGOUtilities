@@ -20,11 +20,6 @@ class NadesService {
     map,
   }: INadesCreation): Promise<NadesEntity> {
     const nadesRepository = getCustomRepository(NadesRepository);
-    const nadesExists = await nadesRepository.findByName(name);
-
-    if (nadesExists) {
-      throw new Error("There's already a nade with this name");
-    }
 
     const nade = nadesRepository.create({
       name,
